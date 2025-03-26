@@ -3,13 +3,14 @@ const jwt = require('jsonwebtoken');
 exports.auth = (req, res, next) => {
   try {
     // 요청 헤더에서 JWT 토큰 가져오기
-    const token = req.header('Authorization');
+    const token = req.header('Authorization')?.replace("Bearer ", "");
+
     if (!token) {
       return res.status(401).json({ message: '토큰이 없습니다. 접근이 거부되었습니다.' });
     }
 
     // 토큰 검증
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "your_jwt_secret");
 
     // 관리자 권한 체크
     if (decoded.role !== 'admin') {

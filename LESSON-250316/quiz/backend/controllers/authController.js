@@ -23,7 +23,7 @@ exports.login = async (req, res) => {
             return res.status(400).json({ message: '아이디 또는 비밀번호가 틀립니다.' });
         }
 
-        const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id, role: user.role }, "your_jwt_secret", { expiresIn: '1h' });
         res.json({ message: '로그인 성공', token });
     } catch (error) {
         res.status(500).json({ message: '로그인 실패', error });
