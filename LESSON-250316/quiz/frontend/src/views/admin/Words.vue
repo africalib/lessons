@@ -18,6 +18,19 @@ const state = reactive<State>({
     }
 });
 
+const update = async (word: Word) => {
+    if (!window.confirm('수정하시겠습니까?')) {
+        return;
+    }
+
+    const res = await httpLib.put(`/v1/api/admin/words/${word._id}`, word);
+
+    if (res.status === 200) {
+        window.alert(res.data.message);
+        load();
+    }
+};
+
 const remove = async (id: string) => {
     if (!window.confirm('삭제하시겠습니까?')) {
         return;
@@ -33,7 +46,9 @@ const remove = async (id: string) => {
 
 const load = async () => {
     const res = await httpLib.get("/v1/api/admin/words");
-    state.words.data = res.data;
+    state.words.data = res.data.sort((a: Word, b: Word) => {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    });
 };
 
 (async function onCreated() {
@@ -65,6 +80,7 @@ const load = async () => {
         </table>
         <div class="actions">
             <router-link to="/admin/word" class="btn btn-primary">+ 단어 추가하기</router-link>
+            <router-link to="/admin/word" class="btn btn-primary">- 단어 수정하기</router-link>
         </div>
     </div>
 </template>

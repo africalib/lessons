@@ -53,7 +53,8 @@ export default {
     post(url: string, args: Record<string, any>) {
         return http.post(url, args);
     },
-    put() {
+    put(url: string, args: Record<string, any>) {
+        return http.put(url, args);
     },
     delete(url: string) {
         return http.delete(url);
