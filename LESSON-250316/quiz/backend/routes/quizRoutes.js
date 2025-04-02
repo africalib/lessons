@@ -1,12 +1,11 @@
-// const express = require('express');
-// const { getQuizzes, createQuiz, updateQuiz, deleteQuiz } = require('../controllers/wordController');
-// const { auth } = require('../middleware/authMiddleware');
+const express = require("express");
+const router = express.Router();
+const quizController = require("../controllers/quizController");
 
-// const router = express.Router();
+// 퀴즈 API
+router.get("/random", quizController.getRandomQuiz);
+router.post("/quizzes/:id/answer", quizController.submitAnswer);
+router.get("/users/:userId/answers", quizController.getUserAnswers);
+router.get("/users/:userId/answers/:id", quizController.getAnswerDetail);
 
-// router.get('/quizzes', auth, getQuizzes);
-// router.post('/quizzes', auth, createQuiz);
-// // router.put('/quizzes/:id', auth, updateQuiz);
-// // router.delete('/quizzes/:id', auth, deleteQuiz);
-
-// module.exports = router;
+module.exports = router;
