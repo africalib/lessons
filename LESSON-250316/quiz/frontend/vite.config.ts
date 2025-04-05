@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/v1/api': {
-        target: 'http://localhost:8090'
+        target: 'http://localhost:8001'
       }
     },
     cors: true // 모든 도메인에서 접근 허용

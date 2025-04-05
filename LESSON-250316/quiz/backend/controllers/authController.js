@@ -26,6 +26,7 @@ exports.login = async (req, res) => {
         const token = jwt.sign({ userId: user._id, role: user.role }, "your_jwt_secret", { expiresIn: '1h' });
         res.json({ message: '로그인 성공', token });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: '로그인 실패', error });
     }
 };

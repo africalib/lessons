@@ -8,7 +8,7 @@ const accountStore = useAccountStore();
     <header class="">
         <div class="container">
             <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
-                <span class="fs-4">Quiz</span>
+                <router-link to="/" class="fs-4">Quiz</router-link>
                 <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                     <template v-if="accountStore.loggedIn">
                         <a>로그아웃</a>
@@ -22,3 +22,12 @@ const accountStore = useAccountStore();
         </div>
     </header>
 </template>
+
+<style scoped>
+header {
+    .container a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+</style>
