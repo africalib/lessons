@@ -11,6 +11,9 @@ const quizRoutes = require("./routes/quizRoutes");
 
 const app = express();
 
+// ✅ 프론트 빌드된 정적 파일 서빙
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
 // ✅ 환경 변수에서 포트 가져오기
 const PORT = process.env.PORT || 8090;
 

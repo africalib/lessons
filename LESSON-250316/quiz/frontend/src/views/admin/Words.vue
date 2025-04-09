@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import type Word from "@/interface/Word";
+import type { Word } from "@/interfaces/Word";
 import httpLib from "@/libs/httpLib";
-import { useRouter } from "vue-router";
 
 interface State {
     words: {
