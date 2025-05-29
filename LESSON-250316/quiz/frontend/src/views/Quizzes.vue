@@ -46,7 +46,7 @@ const startQuiz = async () => {
         return;
     }
 
-    const res = await httpLib.get("/v1/api/question/random");
+    const res = await httpLib.get("/v1/api/quizzes/random");
     state.quiz = res.data;
 };
 
@@ -54,7 +54,7 @@ const submit = async () => {
     const selectedIndexNumber = Number(state.selectedIndex);
 
     state.loading = true;
-    const res = await httpLib.post(`/v1/api/quizzes/${state.quiz.quizId}/answer`, {
+    const res = await httpLib.post(`/v1/api/quizzes/${state.quiz.quizId}/answers`, {
         selectedIndex: selectedIndexNumber,
         options: state.quiz.options,
     });

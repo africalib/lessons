@@ -27,23 +27,26 @@ exports.getRandomQuiz = async (req, res) => {
 // 2) 퀴즈 답변 제출
 exports.submitAnswer = async (req, res) => {
   const { id: wordId } = req.params;
-  const { content } = req.body;
+  const { selectedIndex, options } = req.body;
   const userId = req.user?.userId; // 인증 미들웨어가 붙어 있다면
+  const answer = options[selectedIndex]?.trim();
 
-  if (!content || typeof content !== "string") {
-    return res.status(400).json({ message: "content는 필수 문자열입니다." });
+  if (typeof selectedIndex !== "number") {
+    return res.status(400).json({ message: "selectedIndex의 값이 유효하지 않습니다." });
   }
 
   try {
     const word = await Word.findById(wordId);
+
     if (!word)
       return res.status(404).json({ message: "단어를 찾을 수 없습니다." });
 
-    const isCorrect = word.desc === content.trim();
+    const isCorrect = word.desc === answer;
+
     const saved = await QuizAnswer.create({
       userId,
       wordId: word._id,
-      submittedContent: content.trim(),
+      submittedContent: answer,
       correctContent: word.desc,
       isCorrect,
     });

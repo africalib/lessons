@@ -14,6 +14,21 @@ exports.join = async (req, res) => {
   }
 };
 
+exports.info = async (req, res) => {
+  const token = req.header('Authorization')?.replace("Bearer ", "");
+
+  if (token) {
+    try {
+      const decodedUser = jwt.verify(token, "your_jwt_secret");
+      res.status(200).send(decodedUser.userId);
+      return;
+    } catch (e) {
+    }
+  }
+
+  res.status(200).send(null);
+};
+
 exports.login = async (req, res) => {
   try {
     const { loginId, loginPw } = req.body;
@@ -30,6 +45,7 @@ exports.login = async (req, res) => {
       "your_jwt_secret",
       { expiresIn: "1h" }
     );
+
     res.json({ message: "로그인 성공", token });
   } catch (error) {
     console.log(error);

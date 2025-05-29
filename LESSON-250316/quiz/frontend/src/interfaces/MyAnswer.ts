@@ -1,5 +1,7 @@
 export interface MyAnswer {
-    question: string,
-    right: boolean,
-    date: string;
+    _id: string,
+    submittedContent: string,
+    correctContent: string,
+    isCorrect: boolean,
+    createdAt: string,
 }
