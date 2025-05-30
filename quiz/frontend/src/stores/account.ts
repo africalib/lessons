@@ -1,16 +1,17 @@
-import httpLib from '@/libs/httpLib';
-import { defineStore } from 'pinia';
+import httpLib from "@/libs/httpLib";
+import { defineStore } from "pinia";
 
-export const useAccountStore = defineStore('accountStore', {
+export const useAccountStore = defineStore("accountStore", {
   state: () => ({
     userId: "",
     feched: false,
-    loggedIn: false
+    loggedIn: false,
   }),
   actions: {
     async fetchInfo() {
       const res = await httpLib.get("/v1/api/auth/info");
       const userId = res.data;
+      console.log("userId", userId);
 
       this.feched = true;
       this.loggedIn = !!userId;
@@ -22,5 +23,5 @@ export const useAccountStore = defineStore('accountStore', {
     setLoggedIn(value: boolean) {
       this.loggedIn = value;
     },
-  }
+  },
 });

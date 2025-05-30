@@ -1,0 +1,10 @@
+{
+  "services": [
+    {
+      "name": "backend",
+      "rootDir": "backend",
+      "startCommand": "node app.js",
+      "buildCommand": "cd ../frontend && npm install && npm run build"
+    }
+  ]
+}

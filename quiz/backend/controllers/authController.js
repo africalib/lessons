@@ -15,15 +15,14 @@ exports.join = async (req, res) => {
 };
 
 exports.info = async (req, res) => {
-  const token = req.header('Authorization')?.replace("Bearer ", "");
-
+  const token = req.header("Authorization")?.replace("Bearer ", "");
+  console.log(token);
   if (token) {
     try {
       const decodedUser = jwt.verify(token, "your_jwt_secret");
       res.status(200).send(decodedUser.userId);
       return;
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   res.status(200).send(null);

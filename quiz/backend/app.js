@@ -32,9 +32,14 @@ app.use("/v1/api/auth", authRoutes);
 app.use("/v1/api/admin", adminWordRoutes);
 app.use("/v1/api", quizRoutes);
 
+// ✅ Vue SPA를 위한 fallback (모든 경로 → index.html)
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+});
+
 // ✅ 서버 실행 및 포트 출력
 app.listen(PORT, () => {
-    console.log(`🚀 서버 실행 중! 포트: ${PORT}`);
+  console.log(`🚀 서버 실행 중! 포트: ${PORT}`);
 });
 
 module.exports = app;
