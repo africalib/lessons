@@ -1,0 +1,10 @@
+{
+    "name": "quiz-app",
+    "scripts": {
+        "build": "cd frontend && npm install && npm run build",
+        "start": "node backend/server.js"
+    },
+    "engines": {
+        "node": "18.x"
+    }
+}
