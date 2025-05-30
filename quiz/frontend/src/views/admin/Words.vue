@@ -124,7 +124,6 @@ const load = async () => {
       <router-link to="/admin/word" class="btn btn-primary"
         >＋単語を追加する</router-link
       >
-      >
     </div>
   </div>
 </template>
