@@ -54,11 +54,23 @@ const remove = async (id: string) => {
     return;
   }
 
-  const res = await httpLib.delete(`/v1/api/admin/words/${id}`);
+  try {
+    const res = await httpLib.delete(`/v1/api/admin/words/${id}`);
 
-  if (res.status === 200) {
-    window.alert(res.data.message);
-    load();
+    if (res.status === 200) {
+      window.alert(res.data.message);
+      await load();
+    } else {
+      window.alert("削除に失敗しました。");
+    }
+  } catch (err: any) {
+    console.error(err);
+
+    // 에러 메시지가 서버에서 온 경우
+    const message =
+      err?.response?.data?.message ??
+      "エラーが発生しました。ログインしてください。";
+    window.alert(message);
   }
 };
 

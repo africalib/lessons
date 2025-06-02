@@ -20,11 +20,26 @@ const state = reactive<State>({
 const router = useRouter();
 
 const submit = async () => {
-  const res = await httpLib.post(`/v1/api/admin/words`, state.form);
+  try {
+    const res = await httpLib.post(`/v1/api/admin/words`, state.form);
 
-  if (res.status === 201) {
-    window.alert(res.data.message);
-    router.push("/admin/words");
+    if (res.status === 201) {
+      window.alert(res.data.message);
+      router.push("/admin/words");
+    } else {
+      window.alert("単語の登録に失敗しました。");
+    }
+  } catch (err: any) {
+    console.error(err);
+
+    const status = err?.response?.status;
+    const message =
+      err?.response?.data?.message ??
+      (status === 401 || status === 403
+        ? "この操作には管理者権限が必要です。ログインしてください。"
+        : "エラーが発生しました。");
+
+    window.alert(message);
   }
 };
 </script>
