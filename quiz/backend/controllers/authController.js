@@ -1,4 +1,4 @@
-const User = require("../models/User"); // 모델 불러오기
+const User = require("../models/User"); // モデルの読み込み
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -8,9 +8,9 @@ exports.join = async (req, res) => {
     const hashedPassword = await bcrypt.hash(loginPw, 10);
     const newUser = new User({ loginId, loginPw: hashedPassword, nickname });
     await newUser.save();
-    res.status(201).json({ message: "회원가입 성공!" });
+    res.status(201).json({ message: "会員登録に成功しました！" });
   } catch (error) {
-    res.status(500).json({ message: "회원가입 실패", error });
+    res.status(500).json({ message: "会員登録に失敗しました", error });
   }
 };
 
@@ -36,7 +36,7 @@ exports.login = async (req, res) => {
     if (!user || !(await bcrypt.compare(loginPw, user.loginPw))) {
       return res
         .status(400)
-        .json({ message: "아이디 또는 비밀번호가 틀립니다." });
+        .json({ message: "IDまたはパスワードが間違っています。" });
     }
 
     const token = jwt.sign(
@@ -45,14 +45,14 @@ exports.login = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.json({ message: "로그인 성공", token });
+    res.json({ message: "ログインに成功しました", token });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "로그인 실패", error });
+    res.status(500).json({ message: "ログインに失敗しました", error });
   }
 };
 
-// 로그아웃: 쿠키에서 token 삭제
+// ログアウト: Cookieのtokenを削除
 exports.logout = (req, res) => {
   res
     .clearCookie("token", {
@@ -60,5 +60,5 @@ exports.logout = (req, res) => {
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
     })
-    .json({ message: "로그아웃 성공!" });
+    .json({ message: "ログアウトに成功しました！" });
 };
