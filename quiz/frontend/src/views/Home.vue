@@ -6,7 +6,7 @@
       <img src="/assets/img/bear.png" />
     </div>
     <div class="message">
-      クイズを解くには、上の「クイズに挑戦！」ボタンをクリックしてください。
+      クイズを解くには、上の「クイズを解く！」ボタンをクリックしてください。
     </div>
   </div>
 </template>
