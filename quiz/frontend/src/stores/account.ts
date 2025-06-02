@@ -11,7 +11,6 @@ export const useAccountStore = defineStore("accountStore", {
     async fetchInfo() {
       const res = await httpLib.get("/v1/api/auth/info");
       const userId = res.data;
-      console.log("userId", userId);
 
       this.feched = true;
       this.loggedIn = !!userId;

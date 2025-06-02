@@ -29,7 +29,6 @@ exports.getRandomQuiz = async (req, res) => {
 exports.submitAnswer = async (req, res) => {
   const { id: wordId } = req.params;
   const { selectedIndex, options } = req.body;
-  console.log("req.user:", req.user);
   const userId = req.user?.userId; // 認証ミドルウェアがある場合
   const answer = options[selectedIndex]?.trim();
 

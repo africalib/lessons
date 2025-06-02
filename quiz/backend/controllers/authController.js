@@ -16,7 +16,6 @@ exports.join = async (req, res) => {
 
 exports.info = async (req, res) => {
   const token = req.header("Authorization")?.replace("Bearer ", "");
-  console.log(token);
   if (token) {
     try {
       const decodedUser = jwt.verify(token, "your_jwt_secret");
@@ -47,7 +46,6 @@ exports.login = async (req, res) => {
 
     res.json({ message: "ログインに成功しました", token });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "ログインに失敗しました", error });
   }
 };
