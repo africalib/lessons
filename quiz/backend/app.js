@@ -6,7 +6,6 @@ const connectDB = require("./config/db");
 const path = require("path");
 
 const authRoutes = require("./routes/authRoutes");
-const testRoutes = require("./routes/testRoutes");
 const adminWordRoutes = require("./routes/adminWordRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 
