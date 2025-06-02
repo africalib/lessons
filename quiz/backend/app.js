@@ -27,7 +27,6 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // ✅ 라우트 설정
-app.use("/v1/api/tests", testRoutes);
 app.use("/v1/api/auth", authRoutes);
 app.use("/v1/api/admin", adminWordRoutes);
 app.use("/v1/api", quizRoutes);
