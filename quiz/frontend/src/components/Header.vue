@@ -20,17 +20,26 @@ const logout = async () => {
         <router-link to="/" class="logo fs-4">Quiz</router-link>
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
           <template v-if="accountStore.loggedIn">
-            <a @click="logout">ログアウト</a>
+            <button
+              @click="logout"
+              class="btn btn-link p-0 text-dark text-decoration-none"
+            >
+              ログアウト
+            </button>
           </template>
           <template v-else>
             <router-link
-              to="join"
+              to="/join"
               class="me-3 py-2 text-dark text-decoration-none"
-              >会員登録</router-link
             >
-            <router-link to="/login" class="py-2 text-dark text-decoration-none"
-              >ログイン</router-link
+              会員登録
+            </router-link>
+            <router-link
+              to="/login"
+              class="py-2 text-dark text-decoration-none"
             >
+              ログイン
+            </router-link>
           </template>
         </nav>
       </div>
