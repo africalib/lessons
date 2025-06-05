@@ -1,7 +1,11 @@
-https://ls23.up.railway.app/
-
 # 📚 単語クイズアプリケーション  
+
+👉 **デモはこちら**：[https://ls23.up.railway.app/](https://ls23.up.railway.app/)  
+（Railway にてデプロイ済み）
+
 管理者が単語を登録し、ユーザーがクイズ形式でその単語を解答するAPIベースの単語クイズアプリケーションです。
+
+---
 
 ## 🧩 主な機能
 
@@ -22,8 +26,18 @@ https://ls23.up.railway.app/
 - クイズ回答提出：`POST /v1/api/quizzes/{id}/answers`  
 - ユーザーのクイズ提出履歴取得：`GET /v1/api/users/{userId}/submissions`  
 
+---
+
 ## 🛠️ 技術スタック  
 - バックエンドフレームワーク：**Express.js**  
 - フロントエンドテンプレートエンジン：**Vue.js**  
 - データベース：**MongoDB Atlas**（クラウドベースのNoSQL）  
-- 使用言語：**JavaScript** **TypeScript**
+- 使用言語：**JavaScript**, **TypeScript**
+
+---
+
+## 🌐 デプロイ環境  
+- デプロイ先：**Railway**  
+- GitHubと連携し、Pushと同時にCI/CDによる自動デプロイを実現  
+
+---
