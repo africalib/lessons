@@ -26,4 +26,4 @@ https://ls23.up.railway.app/
 - バックエンドフレームワーク：**Express.js**  
 - フロントエンドテンプレートエンジン：**Vue.js**  
 - データベース：**MongoDB Atlas**（クラウドベースのNoSQL）  
-- 使用言語：**JabaScript** **TypeScript**
+- 使用言語：**JavaScript** **TypeScript**
