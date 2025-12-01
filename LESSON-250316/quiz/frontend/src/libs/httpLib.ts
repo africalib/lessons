@@ -2,7 +2,14 @@ import axios, { type AxiosRequestConfig } from "axios";
 import cookieLib from "./cookieLib";
 
 // 환경 변수에서 API URL 가져오기 (Vercel 배포 시 환경 변수 설정 필요)
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8090";
+// 끝의 슬래시 제거하여 정확한 URL 생성
+const rawUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8090";
+const API_BASE_URL = rawUrl.replace(/\/+$/, ""); // 끝의 슬래시 제거
+
+// 디버깅: 환경 변수 확인 (프로덕션에서는 제거 가능)
+if (import.meta.env.DEV) {
+    console.log("API_BASE_URL:", API_BASE_URL);
+}
 
 const http = axios.create({
     baseURL: API_BASE_URL,
