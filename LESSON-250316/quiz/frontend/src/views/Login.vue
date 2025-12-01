@@ -28,10 +28,8 @@ const submit = async () => {
     const res = await httpLib.post("/v1/api/auth/login", state.form);
 
     if (res.status === 200) {
-        const token = res.data.token;
-        accountStore.setLoggedIn(true);
-        cookieLib.set("token", token);
         window.alert(res.data.message);
+        accountStore.fetchInfo();
         router.push("/");
     }
 };

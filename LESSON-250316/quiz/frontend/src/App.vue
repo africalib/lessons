@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import cookieLib from './libs/cookieLib';
 import { useAccountStore } from './stores/account';
 
-const token = cookieLib.get("token");
 const accountStore = useAccountStore();
 
-if (token) {
-  accountStore.setLoggedIn(true);
-}
+(async () => {
+  await accountStore.fetchInfo();
+})();
 </script>
 
 <template>
-  <Header />
-  <main>
-    <div class="container">
-      <RouterView />
-    </div>
-  </main>
-  <Footer />
+  <template v-if="accountStore.feched">
+    <Header />
+    <main>
+      <div class="container">
+        <RouterView />
+      </div>
+    </main>
+    <Footer />
+  </template>
 </template>
 
 <style scoped></style>

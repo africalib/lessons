@@ -55,7 +55,7 @@ export default {
 
         return http.get(url, config);
     },
-    post(url: string, args: Record<string, any>) {
+    post(url: string, args?: Record<string, any>) {
         return http.post(url, args);
     },
     put(url: string, args: Record<string, any>) {

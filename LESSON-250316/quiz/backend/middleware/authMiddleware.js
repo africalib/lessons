@@ -10,15 +10,15 @@ exports.auth = (req, res, next) => {
     }
 
     // 토큰 검증
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "your_jwt_secret");
+    const decodedUser = jwt.verify(token, process.env.JWT_SECRET || "your_jwt_secret");
 
     // 관리자 권한 체크
-    if (decoded.role !== 'admin') {
+    if (decodedUser.role !== 'admin') {
       return res.status(403).json({ message: '관리자 권한이 필요합니다.' });
     }
 
     // 검증 완료 후 req.user에 정보 추가
-    req.user = decoded;
+    req.user = decodedUser;
     next();
   } catch (error) {
     res.status(401).json({ message: '유효하지 않은 토큰입니다.', error });
