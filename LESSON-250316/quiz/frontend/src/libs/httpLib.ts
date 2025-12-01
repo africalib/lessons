@@ -6,10 +6,10 @@ import cookieLib from "./cookieLib";
 const rawUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8090";
 const API_BASE_URL = rawUrl.replace(/\/+$/, ""); // 끝의 슬래시 제거
 
-// 디버깅: 환경 변수 확인 (프로덕션에서는 제거 가능)
-if (import.meta.env.DEV) {
-    console.log("API_BASE_URL:", API_BASE_URL);
-}
+// 디버깅: 환경 변수 확인 (프로덕션에서도 확인 가능하도록)
+console.log("🔍 API_BASE_URL:", API_BASE_URL);
+console.log("🔍 VITE_API_BASE_URL env:", import.meta.env.VITE_API_BASE_URL);
+console.log("🔍 Mode:", import.meta.env.MODE);
 
 const http = axios.create({
     baseURL: API_BASE_URL,
