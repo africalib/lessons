@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const QuizSchema = new mongoose.Schema({
   question: { type: String, required: true },
@@ -6,4 +7,7 @@ const QuizSchema = new mongoose.Schema({
   correctAnswer: { type: String, required: true },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Quiz', QuizSchema);
+// 환경 변수에서 컬렉션 이름 가져오기 (기본값: quizzes)
+const collectionName = process.env.COLLECTION_NAME || 'quizzes';
+
+module.exports = mongoose.model('Quiz', QuizSchema, collectionName);

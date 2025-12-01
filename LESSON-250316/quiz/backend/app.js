@@ -11,18 +11,22 @@ const quizRoutes = require("./routes/quizRoutes");
 
 const app = express();
 
-// ✅ 프론트 빌드된 정적 파일 서빙
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
 // ✅ 환경 변수에서 포트 가져오기
 const PORT = process.env.PORT || 8090;
 
 // ✅ 데이터베이스 연결
 connectDB();
 
+// ✅ CORS 설정 (프로덕션에서는 Vercel URL만 허용)
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
 // ✅ 미들웨어 설정
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 
 // ✅ 라우트 설정

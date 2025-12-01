@@ -10,7 +10,7 @@ exports.auth = (req, res, next) => {
     }
 
     // 토큰 검증
-    const decoded = jwt.verify(token, "your_jwt_secret");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "your_jwt_secret");
 
     // 관리자 권한 체크
     if (decoded.role !== 'admin') {
