@@ -30,6 +30,19 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
 
+// ✅ 루트 경로 - 헬스 체크
+app.get("/", (req, res) => {
+    res.json({ 
+        message: "Quiz API Server is running",
+        status: "ok",
+        endpoints: {
+            test: "/v1/api/tests/connection",
+            auth: "/v1/api/auth",
+            quizzes: "/v1/api/quizzes"
+        }
+    });
+});
+
 // ✅ 라우트 설정
 app.use("/v1/api/tests", testRoutes);
 app.use("/v1/api/auth", authRoutes);
