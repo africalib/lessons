@@ -65,7 +65,7 @@ Heroku 대시보드에서 다음 환경 변수를 설정하세요:
 
 6. **환경 변수 설정**
    ```bash
-   heroku config:set MONGODB_URI=mongodb+srv://lsh6166:lsh6166a@cluster0.xjgjk.mongodb.net/
+   heroku config:set MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
    heroku config:set DB_NAME=quiz
    heroku config:set COLLECTION_NAME=quizzes
    heroku config:set FRONTEND_URL=https://your-app.vercel.app
