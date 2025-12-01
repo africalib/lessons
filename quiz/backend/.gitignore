@@ -1,0 +1,37 @@
+# Node.js 기본 무시 파일
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# 환경 변수 파일 (보안 정보 보호)
+.env
+
+# 로그 파일
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pm2.log
+
+# 운영 관련 파일
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# 디버깅 관련 파일
+.vscode/
+.idea/
+.DS_Store
+
+# 빌드 결과물 (배포용 빌드가 있을 경우)
+dist/
+build/
+coverage/
+
+# 캐시 파일
+.cache/
+.nyc_output/
