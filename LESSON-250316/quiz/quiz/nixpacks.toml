@@ -1,0 +1,20 @@
+[phases.setup]
+nixPkgs = ["nodejs"]
+
+[phases.install]
+cmds = [
+  "cd frontend && npm install",
+  "cd backend && npm install"
+]
+
+[phases.build]
+cmds = [
+  "cd frontend && npm run build",
+  "rm -rf frontend/dist/.gitkeep",  # optional
+  "ls frontend/dist",               # 🔍 빌드 결과 확인용 (디버깅)
+  "echo copying...",
+  "cp -r frontend/dist backend/public"  # Vue dist -> Express가 서빙할 위치
+]
+
+[start]
+cmd = "cd backend && npm start"
